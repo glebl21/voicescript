@@ -1,4 +1,4 @@
-const DEEPGRAM_KEY = process.env.DEEPGRAM_KEY;
+const GROQ_KEY = process.env.GROQ_KEY;
 
 exports.handler = async function(event) {
   const headers = {
@@ -9,67 +9,54 @@ exports.handler = async function(event) {
 
   if (event.httpMethod === 'OPTIONS') return { statusCode: 200, headers, body: '' };
   if (event.httpMethod !== 'POST') return { statusCode: 405, headers, body: JSON.stringify({ error: 'Method not allowed' }) };
-  if (!DEEPGRAM_KEY) return { statusCode: 500, headers, body: JSON.stringify({ error: 'API key not configured on server' }) };
+  if (!GROQ_KEY) return { statusCode: 500, headers, body: JSON.stringify({ error: 'API key not configured' }) };
 
   try {
     const body = JSON.parse(event.body);
-    const { action } = body;
+    const { audioBase64, fileName, language } = body;
 
-    // ── UPLOAD: читаем base64 и отдаём обратно как upload_url = null (используем raw bytes) ──
-    if (action === 'upload') {
-      // Просто возвращаем base64 обратно — Deepgram примет его напрямую
-      return { statusCode: 200, headers, body: JSON.stringify({ upload_url: body.audioBase64 }) };
+    const audioBuffer = Buffer.from(audioBase64, 'base64');
+
+    const boundary = '----GroqBoundary' + Date.now();
+    const ext = (fileName || 'audio.mp3').split('.').pop().toLowerCase();
+    const mimeTypes = {
+      mp3:'audio/mpeg', mp4:'video/mp4', wav:'audio/wav',
+      m4a:'audio/m4a', webm:'audio/webm', ogg:'audio/ogg',
+      flac:'audio/flac'
+    };
+    const mime = mimeTypes[ext] || 'audio/mpeg';
+
+    const parts = [];
+    parts.push(Buffer.from(`--${boundary}\r\nContent-Disposition: form-data; name="file"; filename="${fileName || 'audio.' + ext}"\r\nContent-Type: ${mime}\r\n\r\n`));
+    parts.push(audioBuffer);
+    parts.push(Buffer.from('\r\n'));
+    parts.push(Buffer.from(`--${boundary}\r\nContent-Disposition: form-data; name="model"\r\n\r\nwhisper-large-v3-turbo\r\n`));
+    if (language) {
+      parts.push(Buffer.from(`--${boundary}\r\nContent-Disposition: form-data; name="language"\r\n\r\n${language}\r\n`));
+    }
+    parts.push(Buffer.from(`--${boundary}\r\nContent-Disposition: form-data; name="response_format"\r\n\r\ntext\r\n`));
+    parts.push(Buffer.from(`--${boundary}--\r\n`));
+
+    const formData = Buffer.concat(parts);
+
+    const res = await fetch('https://api.groq.com/openai/v1/audio/transcriptions', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + GROQ_KEY,
+        'Content-Type': `multipart/form-data; boundary=${boundary}`,
+      },
+      body: formData,
+    });
+
+    if (!res.ok) {
+      const err = await res.text();
+      return { statusCode: res.status, headers, body: JSON.stringify({ error: err }) };
     }
 
-    // ── START + результат сразу (Deepgram не требует polling) ──
-    if (action === 'start') {
-      const { audio_url, language_code, speaker_labels, summarization } = body;
-
-      const audioBytes = Buffer.from(audio_url, 'base64');
-
-      const params = new URLSearchParams({
-        language: language_code || 'ru',
-        punctuate: 'true',
-        diarize: speaker_labels ? 'true' : 'false',
-      });
-
-      const res = await fetch(`https://api.deepgram.com/v1/listen?${params}`, {
-        method: 'POST',
-        headers: {
-          'Authorization': 'Token ' + DEEPGRAM_KEY,
-          'Content-Type': 'audio/mpeg',
-        },
-        body: audioBytes,
-      });
-
-      if (!res.ok) {
-        const err = await res.text();
-        return { statusCode: res.status, headers, body: JSON.stringify({ error: err }) };
-      }
-
-      const data = await res.json();
-      const transcript = data.results?.channels?.[0]?.alternatives?.[0]?.transcript || '';
-
-      // Возвращаем сразу готовый текст
-      return {
-        statusCode: 200,
-        headers,
-        body: JSON.stringify({ transcript_id: 'done', status: 'completed', text: transcript }),
-      };
-    }
-
-    // ── POLL: Deepgram не нужен, но оставим для совместимости ──
-    if (action === 'poll') {
-      return {
-        statusCode: 200,
-        headers,
-        body: JSON.stringify({ status: 'completed', text: body.cached_text || '' }),
-      };
-    }
-
-    return { statusCode: 400, headers, body: JSON.stringify({ error: 'Unknown action' }) };
+    const text = await res.text();
+    return { statusCode: 200, headers, body: JSON.stringify({ text: text.trim() }) };
 
   } catch (err) {
-    return { statusCode: 500, headers, body: JSON.stringify({ error: err.message || 'Internal server error' }) };
+    return { statusCode: 500, headers, body: JSON.stringify({ error: err.message }) };
   }
 };
