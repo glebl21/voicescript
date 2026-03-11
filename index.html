@@ -16,8 +16,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 [data-theme="light"] .bg-orb{opacity:.1}
 .page{display:none;min-height:100vh;position:relative;z-index:1}
 .page.active{display:flex}
-
-/* AUTH */
 #auth-page{align-items:center;justify-content:center;padding:24px}
 .auth-card{background:var(--bg2);border:1px solid var(--border2);border-radius:24px;padding:48px 44px;width:100%;max-width:440px;box-shadow:var(--shadow);animation:slideUp .5s cubic-bezier(.16,1,.3,1)}
 @keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
@@ -41,8 +39,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .btn-demo{width:100%;padding:12px;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
 .btn-demo:hover{background:var(--bg4)}
 .error-msg{background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.3);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--red);margin-bottom:16px;display:none}
-
-/* NAV */
 #app-page{flex-direction:column}
 .navbar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;border-bottom:1px solid var(--border);background:var(--bg2);position:sticky;top:0;z-index:100;transition:background .35s}
 .nav-logo{display:flex;align-items:center;gap:10px}
@@ -60,8 +56,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 input:checked~.toggle-track{background:var(--accent-bg);border-color:var(--accent)}
 input:checked~.toggle-track .toggle-thumb{transform:translateX(24px);background:var(--accent)}
 .free-badge{padding:4px 10px;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.25);border-radius:20px;font-size:11px;color:var(--green);font-family:'DM Mono',monospace;font-weight:500}
-
-/* STATS */
 .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 32px 24px;max-width:1400px;margin:0 auto;width:100%}
 @media(max-width:900px){.stats-row,.app-body{grid-template-columns:1fr!important;padding:0 16px 16px!important}}
 .stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:20px 24px;display:flex;align-items:center;gap:16px;box-shadow:var(--card-shadow);transition:background .35s}
@@ -69,19 +63,13 @@ input:checked~.toggle-track .toggle-thumb{transform:translateX(24px);background:
 .stat-info{flex:1}
 .stat-val{font-family:'Syne',sans-serif;font-size:22px;font-weight:700}
 .stat-label{font-size:12px;color:var(--text3);margin-top:2px;text-transform:uppercase;letter-spacing:.06em}
-
-/* PANELS */
 .app-body{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1400px;margin:0 auto;width:100%;padding:32px;align-items:start}
 .panel{background:var(--bg2);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:var(--card-shadow);transition:background .35s}
 .panel-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
 .panel-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;display:flex;align-items:center;gap:10px}
 .panel-title .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
 .panel-body{padding:24px}
-.badge{padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;font-family:'Syne',sans-serif}
-.badge-purple{background:var(--accent);color:#fff}
-.badge-green{background:rgba(74,222,128,.15);color:var(--green);border:1px solid rgba(74,222,128,.3)}
-
-/* DROPZONE */
+.badge-green{padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;font-family:'Syne',sans-serif;background:rgba(74,222,128,.15);color:var(--green);border:1px solid rgba(74,222,128,.3)}
 .dropzone{border:2px dashed var(--border2);border-radius:16px;padding:48px 24px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg3);position:relative;overflow:hidden}
 .dropzone:hover,.dropzone.drag-over{border-color:var(--accent);background:var(--accent-bg);box-shadow:0 0 30px var(--accent-glow) inset}
 .dropzone input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
@@ -99,8 +87,6 @@ input:checked~.toggle-track .toggle-thumb{transform:translateX(24px);background:
 .file-size{font-size:12px;color:var(--text3);margin-top:3px;font-family:'DM Mono',monospace}
 .file-remove{width:30px;height:30px;border-radius:8px;background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.2);color:var(--red);display:grid;place-items:center;cursor:pointer;flex-shrink:0;transition:all .2s}
 .file-remove:hover{background:rgba(248,113,113,.2)}
-
-/* OPTIONS */
 .options-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
 .option-group label{display:block;font-size:12px;font-weight:500;color:var(--text3);margin-bottom:8px;letter-spacing:.06em;text-transform:uppercase}
 .option-group select{width:100%;padding:10px 34px 10px 12px;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;outline:none;transition:all .2s;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
@@ -111,8 +97,6 @@ input:checked~.toggle-track .toggle-thumb{transform:translateX(24px);background:
 .check-box{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--border2);background:var(--bg3);flex-shrink:0;display:grid;place-items:center;transition:all .2s;color:transparent}
 .check-item input:checked+.check-box{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 0 10px var(--accent-glow)}
 .check-label{font-size:13px;color:var(--text2)}
-
-/* PROGRESS */
 .progress-block{display:none;margin-top:20px}
 .progress-block.visible{display:block}
 .progress-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
@@ -126,15 +110,10 @@ input:checked~.toggle-track .toggle-thumb{transform:translateX(24px);background:
 .step-item.active .step-dot{background:var(--accent);box-shadow:0 0 6px var(--accent);animation:pdot 1s infinite}
 .step-item.done .step-dot{background:var(--green)}
 @keyframes pdot{0%,100%{transform:scale(1)}50%{transform:scale(1.4)}}
-
-/* WAVEFORM */
 .waveform{display:flex;align-items:center;gap:3px;height:24px}
 .wave-bar{width:3px;border-radius:2px;background:var(--accent);animation:wave 1.2s ease-in-out infinite}
-.wave-bar:nth-child(2){animation-delay:.1s}.wave-bar:nth-child(3){animation-delay:.2s}
-.wave-bar:nth-child(4){animation-delay:.3s}.wave-bar:nth-child(5){animation-delay:.2s}
+.wave-bar:nth-child(2){animation-delay:.1s}.wave-bar:nth-child(3){animation-delay:.2s}.wave-bar:nth-child(4){animation-delay:.3s}.wave-bar:nth-child(5){animation-delay:.2s}
 @keyframes wave{0%,100%{height:4px;opacity:.3}50%{height:18px;opacity:1}}
-
-/* RESULT */
 .transcript-header-actions{display:flex;gap:8px}
 .btn-sm{padding:6px 14px;border-radius:8px;font-size:12px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;border:none}
 .btn-sm.accent{background:var(--accent-bg);color:var(--accent)}.btn-sm.accent:hover{background:var(--accent);color:#fff}
@@ -150,15 +129,6 @@ input:checked~.toggle-track .toggle-thumb{transform:translateX(24px);background:
 .transcript-meta{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
 .meta-chip{display:flex;align-items:center;gap:6px;padding:6px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:20px;font-size:12px;font-family:'DM Mono',monospace;color:var(--text2)}
 .meta-chip span{color:var(--accent)}
-
-/* CHAPTERS */
-.chapters-block{margin-top:16px;display:flex;flex-direction:column;gap:8px}
-.chapter-item{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px 14px}
-.chapter-time{font-family:'DM Mono',monospace;font-size:11px;color:var(--text3);margin-bottom:4px}
-.chapter-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px}
-.chapter-summary{font-size:12px;color:var(--text2);line-height:1.6}
-
-/* HISTORY */
 .history-section{padding:0 32px 32px;max-width:1400px;margin:0 auto;width:100%}
 @media(max-width:900px){.history-section{padding:0 16px 24px}}
 .section-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text2);margin-bottom:14px;display:flex;align-items:center;gap:8px}
@@ -170,12 +140,9 @@ input:checked~.toggle-track .toggle-thumb{transform:translateX(24px);background:
 .history-name{font-size:13px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .history-date{font-size:11px;color:var(--text3);margin-top:2px;font-family:'DM Mono',monospace}
 .history-words{font-size:12px;color:var(--text2);font-family:'DM Mono',monospace;flex-shrink:0}
-
-/* TOAST */
 .toast{position:fixed;bottom:24px;right:24px;z-index:1000;background:var(--bg2);border:1px solid var(--border2);border-radius:12px;padding:14px 20px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow);font-size:14px;transform:translateY(100px);opacity:0;transition:all .35s cubic-bezier(.16,1,.3,1);max-width:360px}
 .toast.show{transform:translateY(0);opacity:1}
 .toast-icon{color:var(--green);flex-shrink:0}.toast-icon.err{color:var(--red)}
-
 .copy-success{animation:flash .4s ease}
 @keyframes flash{50%{box-shadow:0 0 20px rgba(74,222,128,.4)}}
 ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
@@ -185,7 +152,6 @@ input:checked~.toggle-track .toggle-thumb{transform:translateX(24px);background:
 <div class="bg-orb orb1"></div>
 <div class="bg-orb orb2"></div>
 
-<!-- AUTH -->
 <div class="page active" id="auth-page">
   <div class="auth-card">
     <div class="auth-logo">
@@ -214,7 +180,6 @@ input:checked~.toggle-track .toggle-thumb{transform:translateX(24px);background:
   </div>
 </div>
 
-<!-- APP -->
 <div class="page" id="app-page">
   <nav class="navbar">
     <div class="nav-logo">
@@ -251,11 +216,10 @@ input:checked~.toggle-track .toggle-thumb{transform:translateX(24px);background:
   </div>
 
   <div class="app-body">
-    <!-- UPLOAD -->
     <div class="panel">
       <div class="panel-header">
         <div class="panel-title"><div class="dot"></div>Загрузить файл</div>
-        <span class="badge badge-green">AssemblyAI</span>
+        <span class="badge-green">Deepgram</span>
       </div>
       <div class="panel-body">
         <div class="dropzone" id="dropzone">
@@ -266,13 +230,11 @@ input:checked~.toggle-track .toggle-thumb{transform:translateX(24px);background:
           <div class="formats"><span class="fmt-badge">MP3</span><span class="fmt-badge">MP4</span><span class="fmt-badge">WAV</span><span class="fmt-badge">M4A</span><span class="fmt-badge">WEBM</span><span class="fmt-badge">OGG</span><span class="fmt-badge">FLAC</span></div>
         </div>
         <div style="font-size:11px;color:var(--text3);margin-top:8px;text-align:center;font-family:'DM Mono',monospace">Полностью бесплатно · Без лимитов на пользователей</div>
-
         <div class="file-preview" id="file-preview">
           <div class="file-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg></div>
           <div class="file-info"><div class="file-name" id="file-name">audio.mp3</div><div class="file-size" id="file-size">0 KB</div></div>
           <div class="file-remove" onclick="removeFile()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
         </div>
-
         <div class="options-grid">
           <div class="option-group">
             <label>Язык</label>
@@ -291,27 +253,13 @@ input:checked~.toggle-track .toggle-thumb{transform:translateX(24px);background:
             </select>
           </div>
           <div class="option-group">
-            <label>Формат</label>
-            <select id="opt-format">
-              <option value="plain">Сплошной текст</option>
-              <option value="chapters">По главам (AI)</option>
+            <label>Говорящие</label>
+            <select id="opt-speakers">
+              <option value="0">Без разделения</option>
+              <option value="1">Определить говорящих</option>
             </select>
           </div>
         </div>
-
-        <div class="options-checks">
-          <label class="check-item">
-            <input type="checkbox" id="opt-speakers">
-            <div class="check-box"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span class="check-label">Определение говорящих (диаризация)</span>
-          </label>
-          <label class="check-item">
-            <input type="checkbox" id="opt-summary">
-            <div class="check-box"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span class="check-label">Краткое AI-резюме</span>
-          </label>
-        </div>
-
         <div class="progress-block" id="progress-block">
           <div class="progress-header">
             <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2);font-weight:500">
@@ -322,20 +270,18 @@ input:checked~.toggle-track .toggle-thumb{transform:translateX(24px);background:
           </div>
           <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
           <div class="progress-steps">
-            <div class="step-item" id="s1"><div class="step-dot"></div>Загрузка на сервер</div>
-            <div class="step-item" id="s2"><div class="step-dot"></div>Отправка в AssemblyAI</div>
+            <div class="step-item" id="s1"><div class="step-dot"></div>Чтение файла</div>
+            <div class="step-item" id="s2"><div class="step-dot"></div>Отправка в Deepgram</div>
             <div class="step-item" id="s3"><div class="step-dot"></div>Расшифровка речи</div>
             <div class="step-item" id="s4"><div class="step-dot"></div>Готово</div>
           </div>
         </div>
-
         <button class="btn-primary" id="go-btn" onclick="startTranscribe()" style="margin-top:20px" disabled>
           <span id="btn-text">Выберите файл</span>
         </button>
       </div>
     </div>
 
-    <!-- RESULT -->
     <div class="panel">
       <div class="panel-header">
         <div class="panel-title"><div class="dot"></div>Результат</div>
@@ -351,11 +297,10 @@ input:checked~.toggle-track .toggle-thumb{transform:translateX(24px);background:
       <div class="transcript-body">
         <div class="transcript-empty" id="t-empty">
           <div class="empty-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
-          <p>Загрузите файл — AssemblyAI расшифрует настоящую речь бесплатно</p>
+          <p>Загрузите файл — Deepgram расшифрует настоящую речь бесплатно</p>
         </div>
         <div class="transcript-text" id="t-result">
           <div class="transcript-content" id="t-content"></div>
-          <div id="t-chapters" class="chapters-block" style="display:none"></div>
           <div class="transcript-meta" id="t-meta"></div>
         </div>
       </div>
@@ -395,37 +340,63 @@ function switchTab(t){
   document.getElementById('register-form').style.display=t==='register'?'':'none';
   document.getElementById('auth-error').style.display='none';
 }
-function showErr(m){const e=document.getElementById('auth-error');e.textContent=m;e.style.display='block'}
+function showErr(m){const e=document.getElementById('auth-error');e.textContent=m;e.style.display='block';}
 function doLogin(){
-  const e=document.getElementById('login-email').value.trim(), p=document.getElementById('login-password').value;
-  const u=JSON.parse(localStorage.getItem(USERS_KEY)).find(u=>u.email===e&&u.password===p);
-  if(u){localStorage.setItem(SESSION_KEY,JSON.stringify(u));loginUser(u)}else showErr('Неверный email или пароль');
+  const e=document.getElementById('login-email').value.trim();
+  const p=document.getElementById('login-password').value;
+  const users=JSON.parse(localStorage.getItem(USERS_KEY));
+  const u=users.find(u=>u.email===e&&u.password===p);
+  if(u){localStorage.setItem(SESSION_KEY,JSON.stringify(u));loginUser(u);}
+  else showErr('Неверный email или пароль');
 }
 function doRegister(){
-  const n=document.getElementById('reg-name').value.trim(), e=document.getElementById('reg-email').value.trim(), p=document.getElementById('reg-password').value;
+  const n=document.getElementById('reg-name').value.trim();
+  const e=document.getElementById('reg-email').value.trim();
+  const p=document.getElementById('reg-password').value;
   if(!n||!e||!p) return showErr('Заполните все поля');
   if(p.length<6) return showErr('Пароль — минимум 6 символов');
   const users=JSON.parse(localStorage.getItem(USERS_KEY));
   if(users.find(u=>u.email===e)) return showErr('Email уже используется');
   const u={email:e,password:p,name:n,stats:{files:0,words:0},history:[]};
-  users.push(u);localStorage.setItem(USERS_KEY,JSON.stringify(users));localStorage.setItem(SESSION_KEY,JSON.stringify(u));loginUser(u);
+  users.push(u);
+  localStorage.setItem(USERS_KEY,JSON.stringify(users));
+  localStorage.setItem(SESSION_KEY,JSON.stringify(u));
+  loginUser(u);
 }
-function demoLogin(){document.getElementById('login-email').value='demo@vs.ai';document.getElementById('login-password').value='demo1234';doLogin()}
+function demoLogin(){
+  document.getElementById('login-email').value='demo@vs.ai';
+  document.getElementById('login-password').value='demo1234';
+  doLogin();
+}
 function loginUser(u){
-  currentUser=u;stats=u.stats||{files:0,words:0};history=u.history||[];
+  currentUser=u; stats=u.stats||{files:0,words:0}; history=u.history||[];
   document.getElementById('nav-username').textContent=u.name||u.email.split('@')[0];
   document.getElementById('nav-avatar').textContent=(u.name||u.email)[0].toUpperCase();
-  updateStats();renderHistory();
+  updateStats(); renderHistory();
   document.getElementById('auth-page').classList.remove('active');
   document.getElementById('app-page').classList.add('active');
   showToast('Добро пожаловать, '+(u.name||'пользователь')+'! 👋');
 }
-function doLogout(){localStorage.removeItem(SESSION_KEY);currentUser=null;selectedFile=null;transcriptText='';document.getElementById('auth-page').classList.add('active');document.getElementById('app-page').classList.remove('active');removeFile()}
-
-function toggleTheme(){const d=document.documentElement,t=d.getAttribute('data-theme')==='dark';d.setAttribute('data-theme',t?'light':'dark');document.getElementById('theme-thumb').textContent=t?'🌙':'☀️'}
-
-function setupDrag(){const dz=document.getElementById('dropzone');dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag-over')});dz.addEventListener('dragleave',()=>dz.classList.remove('drag-over'));dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('drag-over');const f=e.dataTransfer.files[0];if(f)setFile(f)})}
-function onFileSelect(e){const f=e.target.files[0];if(f)setFile(f)}
+function doLogout(){
+  localStorage.removeItem(SESSION_KEY);
+  currentUser=null; selectedFile=null; transcriptText='';
+  document.getElementById('auth-page').classList.add('active');
+  document.getElementById('app-page').classList.remove('active');
+  removeFile();
+}
+function toggleTheme(){
+  const d=document.documentElement;
+  const dark=d.getAttribute('data-theme')==='dark';
+  d.setAttribute('data-theme',dark?'light':'dark');
+  document.getElementById('theme-thumb').textContent=dark?'🌙':'☀️';
+}
+function setupDrag(){
+  const dz=document.getElementById('dropzone');
+  dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag-over');});
+  dz.addEventListener('dragleave',()=>dz.classList.remove('drag-over'));
+  dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('drag-over');const f=e.dataTransfer.files[0];if(f)setFile(f);});
+}
+function onFileSelect(e){const f=e.target.files[0];if(f)setFile(f);}
 function setFile(f){
   selectedFile=f;
   document.getElementById('file-name').textContent=f.name;
@@ -434,12 +405,19 @@ function setFile(f){
   document.getElementById('go-btn').disabled=false;
   document.getElementById('btn-text').textContent='✨ Транскрибировать бесплатно';
 }
-function removeFile(){selectedFile=null;document.getElementById('file-preview').classList.remove('visible');document.getElementById('file-input').value='';document.getElementById('go-btn').disabled=true;document.getElementById('btn-text').textContent='Выберите файл';document.getElementById('progress-block').classList.remove('visible');resetSteps()}
-function fmtBytes(b){if(b<1024)return b+' B';if(b<1048576)return(b/1024).toFixed(1)+' KB';return(b/1048576).toFixed(2)+' MB'}
+function removeFile(){
+  selectedFile=null;
+  document.getElementById('file-preview').classList.remove('visible');
+  document.getElementById('file-input').value='';
+  document.getElementById('go-btn').disabled=true;
+  document.getElementById('btn-text').textContent='Выберите файл';
+  document.getElementById('progress-block').classList.remove('visible');
+  resetSteps();
+}
+function fmtBytes(b){if(b<1024)return b+' B';if(b<1048576)return(b/1024).toFixed(1)+' KB';return(b/1048576).toFixed(2)+' MB';}
 
-// ── CORE TRANSCRIPTION via Netlify Function ──
 async function startTranscribe(){
-  if(!selectedFile||isWorking)return;
+  if(!selectedFile||isWorking) return;
   isWorking=true;
   const btn=document.getElementById('go-btn');
   btn.disabled=true;
@@ -452,34 +430,26 @@ async function startTranscribe(){
   document.getElementById('btn-dl').style.display='none';
 
   const lang=document.getElementById('opt-lang').value;
-  const speakers=document.getElementById('opt-speakers').checked;
-  const doSummary=document.getElementById('opt-summary').checked;
+  const speakers=document.getElementById('opt-speakers').value==='1';
 
   try {
-    // Шаг 1: читаем файл
-    step('s1','active'); await prog(0,20);
-    const base64 = await fileToBase64(selectedFile);
+    step('s1','active');
+    await prog(0,20);
+    const base64=await fileToBase64(selectedFile);
     step('s1','done');
 
-    // Шаг 2: отправляем на Deepgram (результат сразу)
     step('s2','active');
     step('s3','active');
     await prog(20,80);
 
-    const res = await fetch('/.netlify/functions/transcribe', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        action: 'start',
-        audio_url: base64,
-        language_code: lang,
-        speaker_labels: speakers,
-        summarization: doSummary,
-      })
+    const res=await fetch('/.netlify/functions/transcribe',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({action:'start',audio_url:base64,language_code:lang,speaker_labels:speakers})
     });
 
-    if(!res.ok) throw new Error('Ошибка транскрипции: ' + (await res.text()));
-    const result = await res.json();
+    if(!res.ok) throw new Error('Ошибка транскрипции: '+(await res.text()));
+    const result=await res.json();
     if(result.error) throw new Error(result.error);
 
     await prog(80,100);
@@ -487,75 +457,28 @@ async function startTranscribe(){
     step('s3','done');
     step('s4','done');
 
-    // Показываем результат
-    let text = result.text || '';
+    const text=result.text||'';
     if(!text) throw new Error('Текст не распознан — проверьте качество аудио');
 
-    transcriptText = text;
-    document.getElementById('t-content').textContent = text;
-    document.getElementById('t-chapters').style.display = 'none';
-    document.getElementById('t-empty').style.display = 'none';
-    document.getElementById('t-result').classList.add('visible');
-    document.getElementById('btn-copy').style.display = '';
-    document.getElementById('btn-dl').style.display = '';
-
-    const wc=(text.match(/\S+/g)||[]).length;
-    document.getElementById('t-meta').innerHTML=`
-      <div class="meta-chip"><span>${wc.toLocaleString('ru')}</span> слов</div>
-      <div class="meta-chip"><span>${Math.ceil(wc/140)}</span> мин чтения</div>
-      <div class="meta-chip">Deepgram <span>Nova-3</span></div>
-      <div class="meta-chip">Язык: <span>${lang}</span></div>
-    `;
-
-    stats.files++; stats.words+=wc;
-    history.unshift({
-      name: selectedFile.name,
-      date: new Date().toLocaleDateString('ru-RU',{day:'numeric',month:'short',year:'numeric'}),
-      words: wc
-    });
-    if(history.length>15) history.pop();
-    saveUser(); updateStats(); renderHistory();
-    showToast('Готово — '+wc.toLocaleString('ru')+' слов! 🎉');
-
-  } catch(err){
-    showToast(err.message||'Ошибка транскрибации', true);
-    document.getElementById('t-empty').style.display='';
-    resetSteps();
-    document.getElementById('progress-block').classList.remove('visible');
-  }
-
-  isWorking=false;
-  btn.disabled=false;
-  document.getElementById('btn-text').textContent='✨ Транскрибировать ещё раз';
-  document.getElementById('progress-block').classList.remove('visible');
-}
-
-    // Chapters
-    const chapDiv = document.getElementById('t-chapters');
-    if(fmt==='chapters' && result.chapters && result.chapters.length){
-      chapDiv.style.display='';
-      chapDiv.innerHTML='<div style="font-size:12px;color:var(--text3);margin-bottom:8px;font-family:\'DM Mono\',monospace;text-transform:uppercase;letter-spacing:.06em">Главы</div>'+
-        result.chapters.map(c=>`<div class="chapter-item"><div class="chapter-time">${fmtTime(c.start/1000)} – ${fmtTime(c.end/1000)}</div><div class="chapter-title">${c.headline}</div><div class="chapter-summary">${c.summary}</div></div>`).join('');
-    } else { chapDiv.style.display='none' }
-
+    transcriptText=text;
+    document.getElementById('t-content').textContent=text;
     document.getElementById('t-empty').style.display='none';
     document.getElementById('t-result').classList.add('visible');
     document.getElementById('btn-copy').style.display='';
     document.getElementById('btn-dl').style.display='';
 
     const wc=(text.match(/\S+/g)||[]).length;
-    document.getElementById('t-meta').innerHTML=`
-      <div class="meta-chip"><span>${wc.toLocaleString('ru')}</span> слов</div>
-      <div class="meta-chip"><span>${Math.ceil(wc/140)}</span> мин чтения</div>
-      <div class="meta-chip">AssemblyAI <span>v2</span></div>
-      ${result.confidence?`<div class="meta-chip">Точность <span>${Math.round(result.confidence*100)}%</span></div>`:''}
-    `;
+    document.getElementById('t-meta').innerHTML=
+      '<div class="meta-chip"><span>'+wc.toLocaleString('ru')+'</span> слов</div>'+
+      '<div class="meta-chip"><span>'+Math.ceil(wc/140)+'</span> мин чтения</div>'+
+      '<div class="meta-chip">Deepgram <span>Nova</span></div>'+
+      '<div class="meta-chip">Язык: <span>'+lang+'</span></div>';
 
     stats.files++; stats.words+=wc;
     history.unshift({name:selectedFile.name,date:new Date().toLocaleDateString('ru-RU',{day:'numeric',month:'short',year:'numeric'}),words:wc});
-    if(history.length>15)history.pop();
+    if(history.length>15) history.pop();
     saveUser(); updateStats(); renderHistory();
-    showToast('Готово — '+wc.toLocaleString('ru')+' слов расшифровано! 🎉');
+    showToast('Готово — '+wc.toLocaleString('ru')+' слов! 🎉');
 
   } catch(err){
     showToast(err.message||'Ошибка транскрибации',true);
@@ -570,22 +493,17 @@ async function startTranscribe(){
   document.getElementById('progress-block').classList.remove('visible');
 }
 
-function fileToBase64(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(file)})}
-function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
-function fmtTime(s){const m=Math.floor(s/60),ss=Math.floor(s%60);return m+':'+String(ss).padStart(2,'0')}
-
-function saveUser(){const users=JSON.parse(localStorage.getItem(USERS_KEY));const i=users.findIndex(u=>u.email===currentUser.email);if(i!==-1){users[i].stats=stats;users[i].history=history;localStorage.setItem(USERS_KEY,JSON.stringify(users));localStorage.setItem(SESSION_KEY,JSON.stringify(users[i]))}}
-function updateStats(){document.getElementById('stat-files').textContent=stats.files;document.getElementById('stat-words').textContent=stats.words.toLocaleString('ru');document.getElementById('stat-time').textContent=Math.round(stats.words/60)+' мин'}
-function renderHistory(){const l=document.getElementById('history-list');if(!history.length){l.innerHTML='<div style="color:var(--text3);font-size:13px;padding:16px 0">История пуста</div>';return}l.innerHTML=history.map(h=>`<div class="history-item"><svg class="history-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg><div class="history-info"><div class="history-name">${h.name}</div><div class="history-date">${h.date}</div></div><div class="history-words">${h.words.toLocaleString('ru')} слов</div></div>`).join('')}
-
-function prog(from,to){return new Promise(res=>{const fill=document.getElementById('progress-fill'),pct=document.getElementById('progress-pct');let cur=from;const iv=setInterval(()=>{cur=Math.min(cur+(to-from)/25+Math.random()*0.5,to);fill.style.width=cur+'%';pct.textContent=Math.round(cur)+'%';if(cur>=to){clearInterval(iv);res()}},60)})}
-function step(id,state){const el=document.getElementById(id);el.classList.remove('active','done');if(state)el.classList.add(state)}
-function resetSteps(){['s1','s2','s3','s4'].forEach(id=>step(id,''));document.getElementById('progress-fill').style.width='0%';document.getElementById('progress-pct').textContent='0%'}
-
-function copyT(){navigator.clipboard.writeText(transcriptText).then(()=>{const b=document.getElementById('btn-copy');b.classList.add('copy-success');b.innerHTML='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Скопировано';setTimeout(()=>{b.classList.remove('copy-success');b.innerHTML='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Копировать'},2000);showToast('Скопировано!')})}
-function downloadT(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([transcriptText],{type:'text/plain;charset=utf-8'}));a.download=(selectedFile?.name.replace(/\.[^.]+$/,'')||'transcript')+'.txt';a.click();showToast('Файл скачан!')}
-function showToast(m,err=false){const t=document.getElementById('toast'),i=document.getElementById('toast-icon');document.getElementById('toast-msg').textContent=m;i.className='toast-icon'+(err?' err':'');i.innerHTML=err?'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>':'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4000)}
-document.addEventListener('keydown',e=>{if(e.key==='Enter'&&document.getElementById('auth-page').classList.contains('active')){if(document.getElementById('login-form').style.display!=='none')doLogin();else doRegister()}})
+function fileToBase64(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(file);});}
+function saveUser(){const users=JSON.parse(localStorage.getItem(USERS_KEY));const i=users.findIndex(u=>u.email===currentUser.email);if(i!==-1){users[i].stats=stats;users[i].history=history;localStorage.setItem(USERS_KEY,JSON.stringify(users));localStorage.setItem(SESSION_KEY,JSON.stringify(users[i]));}}
+function updateStats(){document.getElementById('stat-files').textContent=stats.files;document.getElementById('stat-words').textContent=stats.words.toLocaleString('ru');document.getElementById('stat-time').textContent=Math.round(stats.words/60)+' мин';}
+function renderHistory(){const l=document.getElementById('history-list');if(!history.length){l.innerHTML='<div style="color:var(--text3);font-size:13px;padding:16px 0">История пуста</div>';return;}l.innerHTML=history.map(h=>'<div class="history-item"><svg class="history-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg><div class="history-info"><div class="history-name">'+h.name+'</div><div class="history-date">'+h.date+'</div></div><div class="history-words">'+h.words.toLocaleString('ru')+' слов</div></div>').join('');}
+function prog(from,to){return new Promise(res=>{const fill=document.getElementById('progress-fill'),pct=document.getElementById('progress-pct');let cur=from;const iv=setInterval(()=>{cur=Math.min(cur+(to-from)/25+Math.random()*0.5,to);fill.style.width=cur+'%';pct.textContent=Math.round(cur)+'%';if(cur>=to){clearInterval(iv);res();}},60);});}
+function step(id,state){const el=document.getElementById(id);if(!el)return;el.classList.remove('active','done');if(state)el.classList.add(state);}
+function resetSteps(){['s1','s2','s3','s4'].forEach(id=>step(id,''));document.getElementById('progress-fill').style.width='0%';document.getElementById('progress-pct').textContent='0%';}
+function copyT(){navigator.clipboard.writeText(transcriptText).then(()=>{const b=document.getElementById('btn-copy');b.classList.add('copy-success');b.innerHTML='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Скопировано';setTimeout(()=>{b.classList.remove('copy-success');b.innerHTML='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Копировать';},2000);showToast('Скопировано!');});}
+function downloadT(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([transcriptText],{type:'text/plain;charset=utf-8'}));a.download=(selectedFile?.name.replace(/\.[^.]+$/,'')||'transcript')+'.txt';a.click();showToast('Файл скачан!');}
+function showToast(m,err=false){const t=document.getElementById('toast'),i=document.getElementById('toast-icon');document.getElementById('toast-msg').textContent=m;i.className='toast-icon'+(err?' err':'');i.innerHTML=err?'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>':'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4000);}
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&document.getElementById('auth-page').classList.contains('active')){if(document.getElementById('login-form').style.display!=='none')doLogin();else doRegister();}});
 </script>
 </body>
 </html>
