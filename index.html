@@ -445,7 +445,7 @@ async function startTranscribe(){
     const res=await fetch('/.netlify/functions/transcribe',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({action:'start',audio_url:base64,language_code:lang,speaker_labels:speakers})
+      body:JSON.stringify({audioBase64:base64,fileName:selectedFile.name,language:lang})
     });
 
     if(!res.ok) throw new Error('Ошибка транскрипции: '+(await res.text()));
