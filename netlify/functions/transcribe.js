@@ -35,7 +35,7 @@ exports.handler = async (event) => {
 
       const payload = {
         audio_url,
-        speech_model: 'universal-2',
+        speech_models: ['universal-2'],
         language_code: language_code || 'ru',
         punctuate: true,
         format_text: true,
