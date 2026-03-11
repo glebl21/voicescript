@@ -1,7 +1,5 @@
 // netlify/functions/transcribe.js
-// Этот файл запускается на сервере Netlify — ключ AssemblyAI скрыт от пользователей
-
-const ASSEMBLYAI_KEY = process.env.ASSEMBLYAI_KEY; // задаётся в Netlify Dashboard
+const ASSEMBLYAI_KEY = process.env.ASSEMBLYAI_KEY;
 
 exports.handler = async (event) => {
   const headers = {
@@ -10,96 +8,69 @@ exports.handler = async (event) => {
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
   };
 
-  if (event.httpMethod === 'OPTIONS') {
-    return { statusCode: 200, headers, body: '' };
-  }
-
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, headers, body: JSON.stringify({ error: 'Method not allowed' }) };
-  }
-
-  if (!ASSEMBLYAI_KEY) {
-    return { statusCode: 500, headers, body: JSON.stringify({ error: 'API key not configured on server' }) };
-  }
+  if (event.httpMethod === 'OPTIONS') return { statusCode: 200, headers, body: '' };
+  if (event.httpMethod !== 'POST') return { statusCode: 405, headers, body: JSON.stringify({ error: 'Method not allowed' }) };
+  if (!ASSEMBLYAI_KEY) return { statusCode: 500, headers, body: JSON.stringify({ error: 'API key not configured on server' }) };
 
   try {
     const body = JSON.parse(event.body);
-    const { action, upload_url, language_code, audio_url } = body;
+    const { action } = body;
 
-    // ── STEP 1: Upload audio file ──
+    // ── UPLOAD ──
     if (action === 'upload') {
       const audioData = Buffer.from(body.audioBase64, 'base64');
-
-      const uploadRes = await fetch('https://api.assemblyai.com/v2/upload', {
+      const res = await fetch('https://api.assemblyai.com/v2/upload', {
         method: 'POST',
-        headers: {
-          'Authorization': ASSEMBLYAI_KEY,
-          'Content-Type': 'application/octet-stream',
-        },
+        headers: { 'Authorization': ASSEMBLYAI_KEY, 'Content-Type': 'application/octet-stream' },
         body: audioData,
       });
-
-      if (!uploadRes.ok) {
-        const err = await uploadRes.text();
-        return { statusCode: uploadRes.status, headers, body: JSON.stringify({ error: err }) };
-      }
-
-      const data = await uploadRes.json();
+      if (!res.ok) return { statusCode: res.status, headers, body: JSON.stringify({ error: await res.text() }) };
+      const data = await res.json();
       return { statusCode: 200, headers, body: JSON.stringify({ upload_url: data.upload_url }) };
     }
 
-    // ── STEP 2: Start transcription ──
+    // ── START ──
     if (action === 'start') {
-      const transcriptRes = await fetch('https://api.assemblyai.com/v2/transcript', {
-        method: 'POST',
-        headers: {
-          'Authorization': ASSEMBLYAI_KEY,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          audio_url: audio_url,
-          language_code: language_code || 'ru',
-          punctuate: true,
-          format_text: true,
-          speaker_labels: body.speaker_labels || false,
-          auto_chapters: body.auto_chapters || false,
-          summarization: body.summarization || false,
-          summary_model: body.summarization ? 'informative' : undefined,
-          summary_type: body.summarization ? 'bullets' : undefined,
-        }),
-      });
+      const { audio_url, language_code, speaker_labels, auto_chapters, summarization } = body;
 
-      if (!transcriptRes.ok) {
-        const err = await transcriptRes.text();
-        return { statusCode: transcriptRes.status, headers, body: JSON.stringify({ error: err }) };
+      const payload = {
+        audio_url,
+        speech_model: 'universal-2',
+        language_code: language_code || 'ru',
+        punctuate: true,
+        format_text: true,
+      };
+      if (speaker_labels) payload.speaker_labels = true;
+      if (auto_chapters) payload.auto_chapters = true;
+      if (summarization) {
+        payload.summarization = true;
+        payload.summary_model = 'informative';
+        payload.summary_type = 'bullets';
       }
 
-      const data = await transcriptRes.json();
+      const res = await fetch('https://api.assemblyai.com/v2/transcript', {
+        method: 'POST',
+        headers: { 'Authorization': ASSEMBLYAI_KEY, 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) return { statusCode: res.status, headers, body: JSON.stringify({ error: await res.text() }) };
+      const data = await res.json();
       return { statusCode: 200, headers, body: JSON.stringify({ transcript_id: data.id }) };
     }
 
-    // ── STEP 3: Poll status ──
+    // ── POLL ──
     if (action === 'poll') {
-      const pollRes = await fetch(`https://api.assemblyai.com/v2/transcript/${body.transcript_id}`, {
+      const res = await fetch(`https://api.assemblyai.com/v2/transcript/${body.transcript_id}`, {
         headers: { 'Authorization': ASSEMBLYAI_KEY },
       });
-
-      if (!pollRes.ok) {
-        const err = await pollRes.text();
-        return { statusCode: pollRes.status, headers, body: JSON.stringify({ error: err }) };
-      }
-
-      const data = await pollRes.json();
+      if (!res.ok) return { statusCode: res.status, headers, body: JSON.stringify({ error: await res.text() }) };
+      const data = await res.json();
       return { statusCode: 200, headers, body: JSON.stringify(data) };
     }
 
     return { statusCode: 400, headers, body: JSON.stringify({ error: 'Unknown action' }) };
 
   } catch (err) {
-    return {
-      statusCode: 500,
-      headers,
-      body: JSON.stringify({ error: err.message || 'Internal server error' }),
-    };
+    return { statusCode: 500, headers, body: JSON.stringify({ error: err.message || 'Internal server error' }) };
   }
 };
